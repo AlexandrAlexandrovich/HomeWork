@@ -31,8 +31,46 @@ public class Task21 {
                 imin = str[i].length();
             }
         }
-            System.out.println("samoe korotkoe chislo: " + smin + ", dlina: " + imin);
-            System.out.println("samoe dlinnoe chislo: " + smax + ", dlina: " + imax);
+        System.out.println("samoe korotkoe chislo: " + smin + ", dlina: " + imin);
+        System.out.println("samoe dlinnoe chislo: " + smax + ", dlina: " + imax);
+        System.out.println();
+
+        System.out.println("vivod v poryadke vozrastaniya dliny: ");
+        for (i = str.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (str[j].length() > str[j + 1].length()) {
+                    String tmp = str[j];
+                    str[j] = str[j + 1];
+                    str[j + 1] = tmp;
+                }
+            }
         }
+        for (i = 0; i < str.length; i++) {
+            System.out.println(str[i] + "  dlina: " + str[i].length());
+        }
+        System.out.println();
+        int sum = 0;
+        Float avg;
+        for (i = 0; i < str.length; i++) {
+            sum += str[i].length();
+        }
+        avg = (float) sum / str.length;
+        System.out.println("srednyaya dlina vvedennyh chisel: " + avg + '\n');
+        System.out.println("chisla, dlina kotoryh menshe sredney: ");
+        for (i = 0; i < str.length; i++) {
+            if (str[i].length() < avg)
+                System.out.println(str[i] + "  dlina: " + str[i].length());
+        }
+        System.out.println();
+        System.out.println("chisla, dlina kotoryh bolshe sredney: ");
+        for (i = 0; i < str.length; i++) {
+            if (str[i].length() > avg)
+                System.out.println(str[i] + "  dlina: " + str[i].length());
+        }
+        System.out.println();
+        System.out.println("");
+
+
     }
+}
 
