@@ -67,10 +67,11 @@ public class Task21 {
             if (str[i].length() > avg)
                 System.out.println(str[i] + "  dlina: " + str[i].length());
         }
+
+
         System.out.println();
         System.out.print("pervoe chislo s naimenshim kolichestvom razlichnyh cifr: ");
-
-
+        
         int min = imax;
         int minposition = 0;
         for (i = 0; i < str.length; i++) {
