@@ -68,9 +68,27 @@ public class Task21 {
                 System.out.println(str[i] + "  dlina: " + str[i].length());
         }
         System.out.println();
-        System.out.println("");
+        System.out.print("pervoe chislo s naimenshim kolichestvom razlichnyh cifr: ");
 
 
+        int min = imax;
+        int minposition = 0;
+        for (i = 0; i < str.length; i++) {
+            int count = 0;
+            for (int j = '0'; j <= '9'; j++) {
+
+                if (str[i].indexOf(j) >= 0)
+                    count++;
+            }
+            if (count < min) {
+                min = count;
+                minposition = i;
+            }
+
+        }
+        System.out.println(str[minposition] + "  kolichestvo razlichnih cifr : " + min);
     }
+
 }
+
 
