@@ -8,12 +8,14 @@ public class Task21 {
         int i;
         String s;
         String str[];
+        String sstr[];
         int arr[];
         Scanner sc = new Scanner(System.in);
         System.out.println("vvedite n celyh chisel");
         s = sc.nextLine();
         System.out.println();
         str = s.split(" ");
+        sstr = s.split(" ");
         arr = new int[str.length + 1];
         for (i = 0; i < str.length; i++)
             arr[i] = Integer.valueOf(str[i]);
@@ -70,8 +72,8 @@ public class Task21 {
 
 
         System.out.println();
-        System.out.print("pervoe chislo s naimenshim kolichestvom razlichnyh cifr: ");
-        
+        System.out.print("pervoe chislo s naimenshim kolichestvom razlichnyh cifr: " + '\n');
+
         int min = imax;
         int minposition = 0;
         for (i = 0; i < str.length; i++) {
@@ -88,8 +90,77 @@ public class Task21 {
 
         }
         System.out.println(str[minposition] + "  kolichestvo razlichnih cifr : " + min);
-    }
+        System.out.println();
 
+        int kount = 0;
+        for (i = 0; i < str.length; i++) {
+            int k = 0;
+            for (int j = 0; j < str[i].length(); j++) {
+                if (Character.getNumericValue(str[i].charAt(j)) % 2 == 0)
+                    k++;
+            }
+            if (k == str[i].length())
+                kount++;
+        }
+
+        System.out.println("kolichestvo chisel soderzhashih tolko chetnye cifry: " + kount);
+        System.out.println();
+
+        kount = 0;
+        for (i = 0; i < str.length; i++) {
+            int k = 0, l = 0;
+            for (int j = 0; j < str[i].length(); j++) {
+                if (Character.getNumericValue(str[i].charAt(j)) % 2 == 0)
+                    k++;
+                else if (Character.getNumericValue(str[i].charAt(j)) % 2 != 0)
+                    l++;
+            }
+            if (k == l)
+                kount++;
+        }
+
+        System.out.println("kolichestvo chisel soderzhashih ravnoe kolichestvo chetnyh i nechetnih cifr: " + kount);
+        System.out.println();
+
+
+        for (i = 0; i < sstr.length; i++) {
+            int k = 0;
+            if (sstr[i].length() > 1) {
+                for (int j = 0; j < sstr[i].length() - 1; j++) {
+
+                    if (Character.getNumericValue(sstr[i].charAt(j + 1)) > Character.getNumericValue(sstr[i].charAt(j)))
+                        k++;
+                }
+
+                if (k == (sstr[i].length() - 1)) {
+                    System.out.println("pervoe chislo soderzhashee cifry v strogom poryadke vozrastaniya: " + sstr[i]);
+                    break;
+                }
+            }
+        }
+        System.out.println();
+        for (i = 0; i < sstr.length; i++) {
+            int l = 0;
+            for (int j = 0; j < sstr[i].length() - 1; j++) {
+                int p = 0;
+                for (int k = j + 1; k < sstr[i].length(); k++) {
+                    if (sstr[i].charAt(j) != sstr[i].charAt(k))
+                        p++;
+                }
+                if (p == sstr[i].length() - (j + 1))
+                    l++;
+            }
+            if (l == sstr[i].length() - 1) {
+                System.out.println("pervoe chislo soderzhashee tolko razlichnye cifry: " + sstr[i]);
+                System.out.println();
+                break;
+            }
+        }
+
+        
+    }
 }
+
+
 
 
