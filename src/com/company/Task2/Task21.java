@@ -1,6 +1,8 @@
 package com.company.Task2;
 
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Task21 {
@@ -16,8 +18,8 @@ public class Task21 {
         System.out.println();
         str = s.split(" ");
         sstr = s.split(" ");
-        arr = new int[str.length + 1];
-        for (i = 0; i < str.length; i++)
+        arr = new int[str.length];
+        for (i = 0; i < str.length - 1; i++)
             arr[i] = Integer.valueOf(str[i]);
 
         String smax = str[0];
@@ -35,7 +37,7 @@ public class Task21 {
         }
         System.out.println("samoe korotkoe chislo: " + smin + ", dlina: " + imin);
         System.out.println("samoe dlinnoe chislo: " + smax + ", dlina: " + imax);
-        System.out.println();
+        System.out.println("------");
 
         System.out.println("vivod v poryadke vozrastaniya dliny: ");
         for (i = str.length - 1; i >= 0; i--) {
@@ -50,20 +52,20 @@ public class Task21 {
         for (i = 0; i < str.length; i++) {
             System.out.println(str[i] + "  dlina: " + str[i].length());
         }
-        System.out.println();
+        System.out.println("------");
         int sum = 0;
         Float avg;
         for (i = 0; i < str.length; i++) {
             sum += str[i].length();
         }
         avg = (float) sum / str.length;
-        System.out.println("srednyaya dlina vvedennyh chisel: " + avg + '\n');
+        System.out.println("srednyaya dlina vvedennyh chisel: " + avg + '\n' + "------");
         System.out.println("chisla, dlina kotoryh menshe sredney: ");
         for (i = 0; i < str.length; i++) {
             if (str[i].length() < avg)
                 System.out.println(str[i] + "  dlina: " + str[i].length());
         }
-        System.out.println();
+        System.out.println("------");
         System.out.println("chisla, dlina kotoryh bolshe sredney: ");
         for (i = 0; i < str.length; i++) {
             if (str[i].length() > avg)
@@ -71,7 +73,7 @@ public class Task21 {
         }
 
 
-        System.out.println();
+        System.out.println("------");
         System.out.print("pervoe chislo s naimenshim kolichestvom razlichnyh cifr: " + '\n');
 
         int min = imax;
@@ -90,7 +92,7 @@ public class Task21 {
 
         }
         System.out.println(str[minposition] + "  kolichestvo razlichnih cifr : " + min);
-        System.out.println();
+        System.out.println("------");
 
         int kount = 0;
         for (i = 0; i < str.length; i++) {
@@ -104,7 +106,7 @@ public class Task21 {
         }
 
         System.out.println("kolichestvo chisel soderzhashih tolko chetnye cifry: " + kount);
-        System.out.println();
+        System.out.println("------");
 
         kount = 0;
         for (i = 0; i < str.length; i++) {
@@ -120,7 +122,7 @@ public class Task21 {
         }
 
         System.out.println("kolichestvo chisel soderzhashih ravnoe kolichestvo chetnyh i nechetnih cifr: " + kount);
-        System.out.println();
+        System.out.println("------");
 
 
         for (i = 0; i < sstr.length; i++) {
@@ -138,7 +140,7 @@ public class Task21 {
                 }
             }
         }
-        System.out.println();
+        System.out.println("------");
         for (i = 0; i < sstr.length; i++) {
             int l = 0;
             for (int j = 0; j < sstr[i].length() - 1; j++) {
@@ -152,14 +154,42 @@ public class Task21 {
             }
             if (l == sstr[i].length() - 1) {
                 System.out.println("pervoe chislo soderzhashee tolko razlichnye cifry: " + sstr[i]);
-                System.out.println();
                 break;
             }
         }
+        System.out.println("------");
+        System.out.println("vvedite kolichestvo chisel dlya vyvoda v vide matricy:  ");
+        int k = sc.nextInt();
+        int dim;
+        double sq = Math.sqrt(k);
+        if (sq - (int) sq == 0) {
+            dim = (int) sq;
+        } else
+            dim = (int) sq + 1;
+        System.out.println("razmernost matricy: " + dim);
+        System.out.println();
+        int[][] ar = new int[dim][dim];
+        Random r = new Random();
+        int count = 0;
+        for (int j = 0; j < dim; j++) {
+            for (int d = 0; d < dim; d++)
 
-        
+                if (count < k) {
+                    ar[j][d] = r.nextInt();
+                    count++;
+                }
+        }
+
+            for (int j = 0; j < dim; j++) {
+                for (int d = 0; d < dim; d++) {
+                    System.out.print("[" + ar[j][d] + "] ");
+                }
+                System.out.println();
+            }
+
+        }
     }
-}
+
 
 
 
